@@ -38,7 +38,7 @@ Project | License
 [jQuery](http://jquery.com/) | [MIT License](http://opensource.org/licenses/MIT)
 [qTip2](http://qtip2.com/) | [MIT License](http://opensource.org/licenses/MIT)
 [DataTables](https://datatables.net/) | [MIT license](http://opensource.org/licenses/MIT) [@](http://datatables.net/license_mit)
-[jquery deparam](https://github.com/chrissrogers/jquery-deparam/blob/master/jquery-deparam.js) | none mentioned
+[jquery deparam](https://github.com/chrissrogers/jquery-deparam/blob/master/jquery-deparam.js) | [MIT license](http://opensource.org/licenses/MIT) [@](http://benalman.com/about/license/)
 [jsSHA](http://caligatio.github.io/jsSHA/) | [BSD license](https://github.com/Caligatio/jsSHA/blob/release-1.42/LICENSE)
 
 ##Installation
