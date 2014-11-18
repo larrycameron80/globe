@@ -22,10 +22,10 @@ GLOBE.OnionooWeightsHistory.reopenClass({
 
         return GLOBE.getJSON(url).then(function(result){
             return GLOBE.Util.compute3DaysHistory(GLOBE.Util.processHistoryResponse({
-                advertisedBandwidth: 'advertised_bandwidth_fraction',
                 consensusWeightFraction: 'consensus_weight_fraction',
-                exitProbability: 'exit_probability',
-                guardProbability: 'guard_probability'
+                guardProbability: 'guard_probability',
+                middleProbability: 'middle_probability',
+                exitProbability: 'exit_probability'
             }, result));
         });
     }

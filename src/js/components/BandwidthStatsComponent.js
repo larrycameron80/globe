@@ -31,9 +31,9 @@ GLOBE.UptimeStatsComponent = GLOBE.GraphStatsComponent.extend({
 });
 GLOBE.WeightStatsComponent = GLOBE.GraphStatsComponent.extend({
     avgFields: [
-        'advertisedBandwidth',
         'consensusWeightFraction',
         'exitProbability',
+        'middleProbability',
         'guardProbability'
     ]
 });
