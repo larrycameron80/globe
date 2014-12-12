@@ -4,7 +4,7 @@
 /**
  * default bridge detail object
  * @see {@link https://onionoo.torproject.org/#details}
- * @type {{nickname: string, hashed_fingerprint: string, or_addresses: Array, last_seen: string, first_seen: string, running: null, flags: string, last_restarted: string, advertised_bandwidth: number, platform: string, pool_assignment: string}}
+ * @type {{nickname: string, hashed_fingerprint: string, or_addresses: Array, last_seen: string, first_seen: string, running: null, flags: string, last_restarted: string, advertised_bandwidth: number, platform: string, transports: string}}
  */
 GLOBE.defaults.OnionooBridgeDetail = {
     nickname: 'Unnamed',
@@ -17,7 +17,7 @@ GLOBE.defaults.OnionooBridgeDetail = {
     last_restarted: '',
     advertised_bandwidth: -1,
     platform: '',
-    pool_assignment: ''
+    transports: ''
 };
 
 /**
