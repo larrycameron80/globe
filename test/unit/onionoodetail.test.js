@@ -80,7 +80,7 @@ test('detail defaults test', function(){
             'last_restarted',
             'advertised_bandwidth',
             'platform',
-            'pool_assignment'
+            'transport'
         ]
     };
 
