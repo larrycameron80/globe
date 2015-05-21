@@ -22,11 +22,11 @@ download the latest archived release from [the release page][].
 
 ## Features
 
-- search for bridges or relays
-- advanced search with country, running, flags and other filters
-- details for a bridge or relay
-- interactive graphs using dygraphs
-- shareable links for searches or details
+- Search for bridges or relays.
+- Advanced search with country, running, flags and other filters.
+- Details for a bridge or relay.
+- Interactive graphs using dygraphs.
+- Shareable links for searches or details.
 
 
 ## License
@@ -94,36 +94,36 @@ If you only want to get the required html, JavaScript and CSS files see the
 
 #### Development Target - `grunt dev`
 
-- useful for local development
-- uses not minified js and css
-- uses grunt watch to update code changes
+- Useful for local development.
+- Uses not minified js and css.
+- Uses `grunt watch` to update the server after making code changes.
 
 
 #### Standalone Target - `grunt standalone`
 
-- useful to create a minified version that is easy to deploy to your server
-- minifies all the js and css files
-- creates a `/build` folder that has all the required resources
-- used to build the resources for the running application
+- Useful to create a minified version that is easy to deploy to your server.
+- Minifies all the js and css files.
+- Creates a `/build` folder that has all the required resources.
+- Used to build the resources for the running application.
 
 
 #### Standalone Target with Archive - `grunt standalone-archive`
 
-- same as `grunt standalone` but creates archive of the build directory
-- used for to create release files on github
+- Same as `grunt standalone`, but creates archive of the build directory.
+- Used for to create release files on Github.
 
 
 #### Continuous Integration Target - `grunt ci`
 
-- same targets as `grunt standalone` with additional testing of the generated
-  files using [karma][]
-- used for travis continuous integration
+- Same targets as `grunt standalone` with additional testing of the generated
+  files using [karma][].
+- Used for Travis continuous integration.
 
 
 #### Default Target - `grunt`
 
-- same as `standalone` except it won't create a build folder with all the
-  resources
+- Same as `standalone` except it won't create a build folder with all the
+  resources.
 
 
   [Globe Logo]: https://raw.github.com/makepanic/globe/master/res/others/logo-big.png "Globe Logo"
