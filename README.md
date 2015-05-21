@@ -4,23 +4,20 @@
 
 
 JavaScript application to search and view details for Tor relays and bridges.
-All the data comes from the [Tor onionoo API](https://onionoo.torproject.org/).
-Uses [Ember.js](http://emberjs.com/) as JavaScript framework.  Inspired by the
-official [Tor Atlas](https://atlas.torproject.org/).
+All the data comes from the [Tor Onionoo API][].  Uses [Ember.js][] as
+Javascript framework.  Inspired by the official [Tor Atlas][] project.
 
-Tor Onionoo Search is not affiliated with the Tor project. "Tor" and the "Onion
-Logo" are registered trademarks of The Tor Project, Inc.
+Tor Onionoo is not affiliated with the Tor project.  "Tor" and the "Onion Logo"
+are registered trademarks of The Tor Project, Inc.
 
 
 ## Use the Application
 
-To use a hosted version of Globe,
-[click here to open http://globe.rndm.de](http://globe.rndm.de/).  If you want
-to build your own version take a look at the [grunt targets](#grunt-targets)
-section.
+To use a hosted version of Globe, [click here][].  If you want to build your
+own version, take a look at the [grunt targets](#grunt-targets) section.
 
-If you can't or don't want to build the application on your own, you could
-download the latest archived relase from [the release page](https://github.com/makepanic/globe/releases).
+If you can't or don't want to build the application on your own, you can
+download the latest archived release from [the release page][].
 
 
 ## Features
@@ -34,8 +31,7 @@ download the latest archived relase from [the release page](https://github.com/m
 
 ## License
 
-Globe is open-sourced software licensed under the
-[MIT license](http://opensource.org/licenses/MIT)
+Globe is open-sourced software licensed under the [MIT License][].
 
 Project | License
 --- | ---
@@ -57,11 +53,10 @@ Project | License
 
 Globe is tested and build with nodejs (0.10.x).  For an easy overview on how
 to install node on your distribution look at
-[Installing Node.js via package manager](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager).
+[Installing Node.js via Package Manager][] -- or, more preferably: [nvm][].
 
 In addition to that, globe can be built in a virtual machine that is managed
-using [Vagrant](http://www.vagrantup.com/).  To make it easier for you, we
-provide a [Vagrantfile](https://gitweb.torproject.org/globe.git/blob/HEAD:/Vagrantfile)
+using [Vagrant][].  To make it easier for you, we provide a [Vagrantfile][]
 that builds an ubuntu (12.04) virtual machine with everything necessary for
 developing and building globe.  If you have vagrant installed run `vagrant up`
 and wait until everything is ready.
@@ -88,10 +83,10 @@ commands.
    files and minifies them.  This can take a while depending on your computer.
 
 3. If it's done start the server using `node app.js`. This will start a simple
-   [express.js](http://expressjs.com/) server that handles the requests.
+   [Express.js][] server that handles the requests.
 
 If you only want to get the required html, JavaScript and CSS files see the
-__Standalone grunt target__ below.
+**Standalone grunt target** below.
 
 
 ### Grunt Targets
@@ -121,13 +116,26 @@ __Standalone grunt target__ below.
 #### Continuous Integration Target - `grunt ci`
 
 - same targets as `grunt standalone` with additional testing of the generated
-  files using [karma](http://karma-runner.github.io/)
+  files using [karma][]
 - used for travis continuous integration
 
 
 #### Default Target - `grunt`
 
-- same as `standalone` except it won't create a build folder with all the ressources
+- same as `standalone` except it won't create a build folder with all the
+  resources
 
 
   [Globe Logo]: https://raw.github.com/makepanic/globe/master/res/others/logo-big.png "Globe Logo"
+  [Tor Onionoo API]: https://onionoo.torproject.org/ "Tor Onionoo API"
+  [Ember.js]: http://emberjs.com/ "Ember.js"
+  [Tor Atlas]: https://atlas.torproject.org/ "Tor Atlas"
+  [click here]: https://globe.torproject.org/ "Tor Globe"
+  [the release page]: https://github.com/makepanic/globe/releases "Tor Globe Releases"
+  [MIT License]: http://opensource.org/licenses/MIT "MIT License"
+  [Installing Node.js via Package Manager]: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager "Installing Node.js via Package Manager"
+  [nvm]: https://github.com/creationix/nvm "NVM - Node Version Manager"
+  [Vagrant]: https://www.vagrantup.com/ "Vagrant"
+  [Vagrantfile]: https://gitweb.torproject.org/globe.git/blob/HEAD:/Vagrantfile "Vagrantfile"
+  [Express.js]: http://expressjs.com/ "Express.js"
+  [karma]: https://karma-runner.github.io/0.12/index.html "Karma"
