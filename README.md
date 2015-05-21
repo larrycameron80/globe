@@ -29,26 +29,6 @@ download the latest archived release from [the release page][].
 - Shareable links for searches or details.
 
 
-## License
-
-Globe is open-sourced software licensed under the [MIT License][].
-
-Project | License
---- | ---
-[Ember.js](http://emberjs.com/) | [MIT License](http://opensource.org/licenses/MIT)
-[Pure](http://purecss.io/) | [Yahoo! Inc. BSD license](https://github.com/yui/pure/blob/master/LICENSE.md)
-[Font Awesome - Font](http://purecss.io/) | [SIL OFL 1.1](http://scripts.sil.org/OFL)
-[Font Awesome - SASS files](http://purecss.io/) | [MIT License](http://opensource.org/licenses/mit-license.html)
-[Handlebars](http://handlebarsjs.com/) | [MIT License](http://opensource.org/licenses/MIT)
-[dygraphs](http://dygraphs.com/) | [MIT License](http://opensource.org/licenses/MIT)
-[moment](http://momentjs.com/) | [MIT License](http://opensource.org/licenses/MIT)
-[jQuery](http://jquery.com/) | [MIT License](http://opensource.org/licenses/MIT)
-[qTip2](http://qtip2.com/) | [MIT License](http://opensource.org/licenses/MIT)
-[DataTables](https://datatables.net/) | [MIT license](http://opensource.org/licenses/MIT) [@](http://datatables.net/license_mit)
-[jquery deparam](https://github.com/chrissrogers/jquery-deparam/blob/master/jquery-deparam.js) | [MIT license](http://opensource.org/licenses/MIT) [@](http://benalman.com/about/license/)
-[jsSHA](http://caligatio.github.io/jsSHA/) | [BSD license](https://github.com/Caligatio/jsSHA/blob/release-1.42/LICENSE)
-
-
 ## Installation
 
 Globe is tested and build with nodejs (0.10.x).  For an easy overview on how
@@ -124,6 +104,26 @@ If you only want to get the required html, JavaScript and CSS files see the
 
 - Same as `standalone` except it won't create a build folder with all the
   resources.
+
+
+## License
+
+Globe is open-sourced software licensed under the [MIT License][].
+
+Project | License
+--- | ---
+[Ember.js](http://emberjs.com/) | [MIT License](http://opensource.org/licenses/MIT)
+[Pure](http://purecss.io/) | [Yahoo! Inc. BSD license](https://github.com/yui/pure/blob/master/LICENSE.md)
+[Font Awesome - Font](http://purecss.io/) | [SIL OFL 1.1](http://scripts.sil.org/OFL)
+[Font Awesome - SASS files](http://purecss.io/) | [MIT License](http://opensource.org/licenses/mit-license.html)
+[Handlebars](http://handlebarsjs.com/) | [MIT License](http://opensource.org/licenses/MIT)
+[dygraphs](http://dygraphs.com/) | [MIT License](http://opensource.org/licenses/MIT)
+[moment](http://momentjs.com/) | [MIT License](http://opensource.org/licenses/MIT)
+[jQuery](http://jquery.com/) | [MIT License](http://opensource.org/licenses/MIT)
+[qTip2](http://qtip2.com/) | [MIT License](http://opensource.org/licenses/MIT)
+[DataTables](https://datatables.net/) | [MIT license](http://opensource.org/licenses/MIT) [@](http://datatables.net/license_mit)
+[jquery deparam](https://github.com/chrissrogers/jquery-deparam/blob/master/jquery-deparam.js) | [MIT license](http://opensource.org/licenses/MIT) [@](http://benalman.com/about/license/)
+[jsSHA](http://caligatio.github.io/jsSHA/) | [BSD license](https://github.com/Caligatio/jsSHA/blob/release-1.42/LICENSE)
 
 
   [Globe Logo]: https://raw.github.com/makepanic/globe/master/res/others/logo-big.png "Globe Logo"
