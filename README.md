@@ -12,7 +12,7 @@ Tor Onionoo Search is not affiliated with the Tor project. "Tor" and the "Onion
 Logo" are registered trademarks of The Tor Project, Inc.
 
 
-## Use the application
+## Use the Application
 
 To use a hosted version of Globe,
 [click here to open http://globe.rndm.de](http://globe.rndm.de/).  If you want
@@ -94,17 +94,17 @@ If you only want to get the required html, JavaScript and CSS files see the
 __Standalone grunt target__ below.
 
 
-### grunt targets
+### Grunt Targets
 
 
-##### Development target - `grunt dev`
+#### Development Target - `grunt dev`
 
 - useful for local development
 - uses not minified js and css
 - uses grunt watch to update code changes
 
 
-##### Standalone target - `grunt standalone`
+#### Standalone Target - `grunt standalone`
 
 - useful to create a minified version that is easy to deploy to your server
 - minifies all the js and css files
@@ -112,20 +112,20 @@ __Standalone grunt target__ below.
 - used to build the resources for the running application
 
 
-##### Standalone target with archive - `grunt standalone-archive`
+#### Standalone Target with Archive - `grunt standalone-archive`
 
 - same as `grunt standalone` but creates archive of the build directory
 - used for to create release files on github
 
 
-##### Continuous integration target - `grunt ci`
+#### Continuous Integration Target - `grunt ci`
 
 - same targets as `grunt standalone` with additional testing of the generated
   files using [karma](http://karma-runner.github.io/)
 - used for travis continuous integration
 
 
-##### Default target - `grunt`
+#### Default Target - `grunt`
 
 - same as `standalone` except it won't create a build folder with all the ressources
 
