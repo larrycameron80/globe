@@ -35,10 +35,10 @@ Globe is tested and build with nodejs (0.10.x).  For an easy overview on how
 to install node on your distribution look at
 [Installing Node.js via Package Manager][] -- or, more preferably: [nvm][].
 
-In addition to that, globe can be built in a virtual machine that is managed
+In addition to that, Globe can be built in a virtual machine that is managed
 using [Vagrant][].  To make it easier for you, we provide a [Vagrantfile][]
 that builds an ubuntu (12.04) virtual machine with everything necessary for
-developing and building globe.  If you have vagrant installed run `vagrant up`
+developing and building Globe.  If you have vagrant installed run `vagrant up`
 and wait until everything is ready.
 
 **NOTE**: By default, Vagrant will expose the local Globe instance on
@@ -46,7 +46,7 @@ and wait until everything is ready.
 browser, you can do so there.
 
 Connect to your running virtual machine via `vagrant ssh`.  Using the shared
-folder (`cd /vagrant/`) you can continue building globe using the following
+folder (`cd /vagrant/`) you can continue building Globe using the following
 commands.
 
 
@@ -63,7 +63,7 @@ commands.
 1. First you need all the npm dependencies. Run `npm install`.
 
 2. Now you're ready to build the application and start the server.  Call
-   `grunt` and wait for it to complete the build process.  Grunt precompiles
+   `grunt` and wait for it to complete the build process.  Grunt pre-compiles
    the handlebars templates, combines all the different JavaScript and CSS
    files and minifies them.  This can take a while depending on your computer.
 
