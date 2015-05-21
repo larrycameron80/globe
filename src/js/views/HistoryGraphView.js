@@ -171,7 +171,7 @@ GLOBE.RelayBandwidthView = GLOBE.HistoryGraphView.extend({
     },
     title: 'Bandwidth',
     graphs: ['readHistory', 'writeHistory'],
-    labels: ['written bytes per second', 'read bytes per second'],
+    labels: ['read bytes per second', 'written bytes per second'],
     legendPos: [{x:60,y:25}, {x:270,y:25}]
 });
 
