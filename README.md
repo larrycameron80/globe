@@ -1,6 +1,5 @@
-<p align="center">
-  <img src="https://raw.github.com/makepanic/globe/master/res/others/logo-big.png" alt="globe"/>
-</p>
+![Globe Logo][]
+
 
 JavaScript application to search and view details for Tor relays and bridges. All the data comes from the [Tor onionoo API](https://onionoo.torproject.org/). Uses [Ember.js](http://emberjs.com/) as JavaScript framework.
 Inspired by the official [Tor Atlas](https://atlas.torproject.org/).
@@ -98,3 +97,5 @@ If you only want to get the required html, JavaScript and CSS files see the __St
 
 - same as `standalone` except it won't create a build folder with all the ressources
 
+
+  [Globe Logo]: https://raw.github.com/makepanic/globe/master/res/others/logo-big.png "Globe Logo"
