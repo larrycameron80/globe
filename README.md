@@ -41,6 +41,10 @@ that builds an ubuntu (12.04) virtual machine with everything necessary for
 developing and building globe.  If you have vagrant installed run `vagrant up`
 and wait until everything is ready.
 
+**NOTE**: By default, Vagrant will expose the local Globe instance on
+[http://localhost:1337][].  So if you want to view the Globe site in your
+browser, you can do so there.
+
 Connect to your running virtual machine via `vagrant ssh`.  Using the shared
 folder (`cd /vagrant/`) you can continue building globe using the following
 commands.
@@ -51,6 +55,7 @@ commands.
 1. `npm install` (not necessary in the vagrant machine)
 2. `grunt`
 3. `node app.js`
+4. In your browser, visit [http://localhost:1337][].
 
 
 ### Explanation
@@ -139,3 +144,4 @@ Project | License
   [Vagrantfile]: https://gitweb.torproject.org/globe.git/blob/HEAD:/Vagrantfile "Vagrantfile"
   [Express.js]: http://expressjs.com/ "Express.js"
   [karma]: https://karma-runner.github.io/0.12/index.html "Karma"
+  [http://localhost:1337]: http://localhost:1337 "View Globe Locally"
