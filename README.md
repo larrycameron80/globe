@@ -1,30 +1,119 @@
-<p align="center">
-  <img src="https://raw.github.com/makepanic/globe/master/res/others/logo-big.png" alt="globe"/>
-</p>
+![Globe Logo][]
 
-JavaScript application to search and view details for Tor relays and bridges. All the data comes from the [Tor onionoo API](https://onionoo.torproject.org/). Uses [Ember.js](http://emberjs.com/) as JavaScript framework.
-Inspired by the official [Tor Atlas](https://atlas.torproject.org/).
+[![Build Status](https://travis-ci.org/makepanic/globe.png?branch=master)](https://travis-ci.org/makepanic/globe)
 
-Tor Onionoo Search is not affiliated with the Tor project. "Tor" and the "Onion Logo" are registered trademarks of The Tor Project, Inc.
 
-##Use the application [![Build Status](https://travis-ci.org/makepanic/globe.png?branch=master)](https://travis-ci.org/makepanic/globe)
+JavaScript application to search and view details for Tor relays and bridges.
+All the data comes from the [Tor Onionoo API][].  Uses [Ember.js][] as
+Javascript framework.  Inspired by the official [Tor Atlas][] project.
 
-To use a hosted version of Globe, [click here to open http://globe.rndm.de](http://globe.rndm.de/). 
-If you want to build your own version take a look at the [grunt targets](#grunt-targets) section. 
+Tor Onionoo is not affiliated with the Tor project.  "Tor" and the "Onion Logo"
+are registered trademarks of The Tor Project, Inc.
 
-If you can't or don't want to build the application on your own, you could download the latest archived relase from [the release page](https://github.com/makepanic/globe/releases).
 
-##Features
+## Use the Application
 
-- search for bridges or relays
-- advanced search with country, running, flags and other filters
-- details for a bridge or relay
-- interactive graphs using dygraphs
-- shareable links for searches or details
+To use a hosted version of Globe, [click here][].  If you want to build your
+own version, take a look at the [grunt targets](#grunt-targets) section.
 
-##License
+If you can't or don't want to build the application on your own, you can
+download the latest archived release from [the release page][].
 
-Globe is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
+## Features
+
+- Search for bridges or relays.
+- Advanced search with country, running, flags and other filters.
+- Details for a bridge or relay.
+- Interactive graphs using dygraphs.
+- Shareable links for searches or details.
+
+
+## Installation
+
+Globe is tested and build with nodejs (0.10.x).  For an easy overview on how
+to install node on your distribution look at
+[Installing Node.js via Package Manager][] -- or, more preferably: [nvm][].
+
+In addition to that, Globe can be built in a virtual machine that is managed
+using [Vagrant][].  To make it easier for you, we provide a [Vagrantfile][]
+that builds an ubuntu (12.04) virtual machine with everything necessary for
+developing and building Globe.  If you have vagrant installed run `vagrant up`
+and wait until everything is ready.
+
+**NOTE**: By default, Vagrant will expose the local Globe instance on
+[http://localhost:1337][].  So if you want to view the Globe site in your
+browser, you can do so there.
+
+Connect to your running virtual machine via `vagrant ssh`.  Using the shared
+folder (`cd /vagrant/`) you can continue building Globe using the following
+commands.
+
+
+### Summary:
+
+1. `npm install` (not necessary in the vagrant machine)
+2. `grunt`
+3. `node app.js`
+4. In your browser, visit [http://localhost:1337][].
+
+
+### Explanation
+
+1. First you need all the npm dependencies.  Run `npm install`.
+
+2. Now you're ready to build the application and start the server.  Call
+   `grunt` and wait for it to complete the build process.  Grunt pre-compiles
+   the handlebars templates, combines all the different JavaScript and CSS
+   files and minifies them.  This can take a while depending on your computer.
+
+3. If it's done start the server using `node app.js`.  This will start a simple
+   [Express.js][] server that handles the requests.
+
+If you only want to get the required html, JavaScript and CSS files see the
+**Standalone grunt target** below.
+
+
+### Grunt Targets
+
+
+#### Development Target - `grunt dev`
+
+- Useful for local development.
+- Uses not minified js and css.
+- Uses `grunt watch` to update the server after making code changes.
+
+
+#### Standalone Target - `grunt standalone`
+
+- Useful to create a minified version that is easy to deploy to your server.
+- Minifies all the js and css files.
+- Creates a `/build` folder that has all the required resources.
+- Used to build the resources for the running application.
+
+
+#### Standalone Target with Archive - `grunt standalone-archive`
+
+- Same as `grunt standalone`, but creates archive of the build directory.
+- Used for to create release files on Github.
+
+
+#### Continuous Integration Target - `grunt ci`
+
+- Same targets as `grunt standalone` with additional testing of the generated
+  files using [karma][].
+- Used for Travis continuous integration.
+
+
+#### Default Target - `grunt`
+
+- Same as `standalone` except it won't create a build folder with all the
+  resources.
+
+
+## License
+
+Globe is open-sourced software licensed under the [MIT License][].
 
 Project | License
 --- | ---
@@ -41,60 +130,18 @@ Project | License
 [jquery deparam](https://github.com/chrissrogers/jquery-deparam/blob/master/jquery-deparam.js) | [MIT license](http://opensource.org/licenses/MIT) [@](http://benalman.com/about/license/)
 [jsSHA](http://caligatio.github.io/jsSHA/) | [BSD license](https://github.com/Caligatio/jsSHA/blob/release-1.42/LICENSE)
 
-##Installation
 
-Globe is tested and build with nodejs (0.10.x). For an easy overview on how to install node on your distribution look at
-[Installing Node.js via package manager](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager).
-
-In addition to that, globe can be built in a virtual machine that is managed using [Vagrant](http://www.vagrantup.com/).
-To make it easier for you, we provide a [Vagrantfile](https://gitweb.torproject.org/globe.git/blob/HEAD:/Vagrantfile) that builds an ubuntu (12.04) virtual machine
-with everything necessary for developing and building globe. If you have vagrant installed run `vagrant up` and wait until everything is ready.
-
-Connect to your running virtual machine via `vagrant ssh`.
-Using the shared folder (`cd /vagrant/`) you can continue building globe using the following commands.
-
-###Summary:
-
-1. `npm install` (not necessary in the vagrant machine)
-2. `grunt`
-3. `node app.js`
-
-###Explanation
-
-1. First you need all the npm dependencies. Run `npm install`.
-
-2. Now you're ready to build the application and start the server. Call `grunt` and wait for it to complete the build process. Grunt precompiles the handlebars templates, combines all the different JavaScript and CSS files and minifies them. This can take a while depending on your computer.
-
-3. If it's done start the server using `node app.js`. This will start a simple [express.js](http://expressjs.com/) server that handles the requests.
-
-If you only want to get the required html, JavaScript and CSS files see the __Standalone grunt target__ below.
-
-###grunt targets
-
-#####Development target - `grunt dev`
-
-- useful for local development
-- uses not minified js and css
-- uses grunt watch to update code changes
-
-#####Standalone target - `grunt standalone`
-
-- useful to create a minified version that is easy to deploy to your server
-- minifies all the js and css files
-- creates a `/build` folder that has all the required resources
-- used to build the resources for the running application
-
-#####Standalone target with archive - `grunt standalone-archive`
-
-- same as `grunt standalone` but creates archive of the build directory
-- used for to create release files on github
-
-#####Continuous integration target - `grunt ci`
-
-- same targets as `grunt standalone` with additional testing of the generated files using [karma](http://karma-runner.github.io/)
-- used for travis continuous integration
-
-#####Default target - `grunt`
-
-- same as `standalone` except it won't create a build folder with all the ressources
-
+  [Globe Logo]: https://raw.github.com/makepanic/globe/master/res/others/logo-big.png "Globe Logo"
+  [Tor Onionoo API]: https://onionoo.torproject.org/ "Tor Onionoo API"
+  [Ember.js]: http://emberjs.com/ "Ember.js"
+  [Tor Atlas]: https://atlas.torproject.org/ "Tor Atlas"
+  [click here]: https://globe.torproject.org/ "Tor Globe"
+  [the release page]: https://github.com/makepanic/globe/releases "Tor Globe Releases"
+  [MIT License]: http://opensource.org/licenses/MIT "MIT License"
+  [Installing Node.js via Package Manager]: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager "Installing Node.js via Package Manager"
+  [nvm]: https://github.com/creationix/nvm "NVM - Node Version Manager"
+  [Vagrant]: https://www.vagrantup.com/ "Vagrant"
+  [Vagrantfile]: https://gitweb.torproject.org/globe.git/blob/HEAD:/Vagrantfile "Vagrantfile"
+  [Express.js]: http://expressjs.com/ "Express.js"
+  [karma]: https://karma-runner.github.io/0.12/index.html "Karma"
+  [http://localhost:1337]: http://localhost:1337 "View Globe Locally"
