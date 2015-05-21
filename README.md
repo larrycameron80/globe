@@ -60,14 +60,14 @@ commands.
 
 ### Explanation
 
-1. First you need all the npm dependencies. Run `npm install`.
+1. First you need all the npm dependencies.  Run `npm install`.
 
 2. Now you're ready to build the application and start the server.  Call
    `grunt` and wait for it to complete the build process.  Grunt pre-compiles
    the handlebars templates, combines all the different JavaScript and CSS
    files and minifies them.  This can take a while depending on your computer.
 
-3. If it's done start the server using `node app.js`. This will start a simple
+3. If it's done start the server using `node app.js`.  This will start a simple
    [Express.js][] server that handles the requests.
 
 If you only want to get the required html, JavaScript and CSS files see the
