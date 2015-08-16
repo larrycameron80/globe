@@ -9,7 +9,7 @@ GLOBE.BaseSummariesView = Em.View.extend({
 
     classNames: ['relay-summary-list'],
 
-    didInsertElement: function(){
+    didInsertElement: function() {
         var that = this;
         var $el = this.$();
         var table = $el.dataTable({
@@ -25,29 +25,29 @@ GLOBE.BaseSummariesView = Em.View.extend({
             'aoColumns': this.get('columnDefinition')
         });
 
-        $el.on('click', 'tr', function(){
+        $el.on('click', 'tr', function() {
             // set function scope and parameter ( == view scope )
             that.rowClickedHandler.call(this, that);
         });
         this.set('dataTable', table);
 
         Em.$(window).on('resize', function () {
-            Em.run.throttle(null, function(){
+            Em.run.throttle(null, function() {
                 table.fnAdjustColumnSizing();
             }, 150);
         });
     },
-    createTableDataItem: function(){return {};},
-    rowClickedHandler: function(){},
+    createTableDataItem: function() {return {};},
+    rowClickedHandler: function() {},
 
-    dataChanged: function(){
+    dataChanged: function() {
         var data = this.get('data');
         var table = this.get('dataTable');
 
-        if(data){
+        if (data) {
             var tableData = [];
 
-            for(var i = 0, max = data.length; i < max; i++){
+            for (var i = 0, max = data.length; i < max; i++) {
                 tableData.push(this.createTableDataItem(data[i]));
             }
 
@@ -59,15 +59,15 @@ GLOBE.BaseSummariesView = Em.View.extend({
         }
     }.observes('data.length'),
 
-    willDestroyElement: function(){
+    willDestroyElement: function() {
         this.$('.has-tip').qtip('destroy', true);
     },
 
-    isVisibleChanged: function(){
+    isVisibleChanged: function() {
         var table = this.get('dataTable');
         var visible = this.get('parentView.isVisible');
-        if(visible && table){
-            setTimeout(function(){
+        if (visible && table) {
+            setTimeout(function() {
                 table.fnAdjustColumnSizing();
 
             }, 0);
@@ -113,13 +113,13 @@ GLOBE.RelaySummariesView = GLOBE.BaseSummariesView.extend({
         'mRender': GLOBE.Formatter.boolean,
         'mDataProp': 'running'
     }],
-    rowClickedHandler: function(scope){
+    rowClickedHandler: function(scope) {
         var item = scope.get('dataTable').fnGetData(this);
-        if(item && item.hasOwnProperty('fingerprint') && item.fingerprint.length === 40){
+        if (item && item.hasOwnProperty('fingerprint') && item.fingerprint.length === 40) {
             scope.get('controller').send('showRelayDetail', item.fingerprint);
         }
     },
-    createTableDataItem: function(item){
+    createTableDataItem: function(item) {
         return {
             'running': item.running,
             'nickname': item.nickname,
@@ -166,13 +166,13 @@ GLOBE.BridgeSummariesView = GLOBE.BaseSummariesView.extend({
         'mRender': GLOBE.Formatter.boolean,
         'mDataProp': 'running'
     }],
-    rowClickedHandler: function(scope){
+    rowClickedHandler: function(scope) {
         var item = scope.get('dataTable').fnGetData(this);
-        if(item && item.hasOwnProperty('fingerprint') && item.fingerprint.length === 40){
+        if (item && item.hasOwnProperty('fingerprint') && item.fingerprint.length === 40) {
             scope.get('controller').send('showBridgeDetail', item.fingerprint);
         }
     },
-    createTableDataItem: function(item){
+    createTableDataItem: function(item) {
         return {
             'nickname': item.nickname,
             'advertisedBandwidth': item.advertised_bandwidth,

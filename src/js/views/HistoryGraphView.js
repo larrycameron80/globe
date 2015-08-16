@@ -11,9 +11,9 @@ GLOBE.HistoryGraphView = Em.View.extend({
     dygraph: null,
     hasGraph: false,
 
-    click: function(e){
+    click: function(e) {
         // check if clicked element has save-as-png in classList
-        if(e.target.classList.contains('save-as-png')){
+        if (e.target.classList.contains('save-as-png')) {
             var dygraph = this.get('dygraph');
 
             var tmpImage = document.createElement('image');
@@ -23,7 +23,7 @@ GLOBE.HistoryGraphView = Em.View.extend({
         }
     },
 
-    plot: function(){
+    plot: function() {
         var graphOpts = this.get('graphOpts');
         var selector = this.$()[0].id;
         var $graphCanvas = $('#' + selector).find('.graph-canvas');
@@ -48,23 +48,23 @@ GLOBE.HistoryGraphView = Em.View.extend({
             h = 0;
 
         // check if view width/height are set and use these values, otherwise use computed and store them
-        if(storedWidth === 0){
+        if (storedWidth === 0) {
             w = $graphCanvas.width();
             this.set('width', w);
-        }else{
+        } else {
             w = storedWidth;
         }
-        if(storedHeight === 0){
+        if (storedHeight === 0) {
             h = $graphCanvas.height() || 250;
             this.set('height', h);
-        }else{
+        } else {
             h = storedHeight;
         }
 
         // check what histories data to use
-        for(var i = 0, max = graphs.length; i < max; i++){
+        for (var i = 0, max = graphs.length; i < max; i++) {
             var graph = graphs[i];
-            if(data.hasOwnProperty(graph)){
+            if (data.hasOwnProperty(graph)) {
                 histories.push(data[graph]);
             }
         }
@@ -75,22 +75,22 @@ GLOBE.HistoryGraphView = Em.View.extend({
         var countedHistory = 0;
         var maxVal = 0;
 
-        for(var j = 0, max2 = histories.length; j < max2; j++){
+        for (var j = 0, max2 = histories.length; j < max2; j++) {
             var history = histories[j];
 
             // get the data from the chosen period out of the chosen history object
-            if(history && history[period] && history[period].values){
+            if (history && history[period] && history[period].values) {
 
-                for(var historyValueIndex = 0, historyValues = history[period].values.length; historyValueIndex < historyValues; historyValueIndex++){
+                for (var historyValueIndex = 0, historyValues = history[period].values.length; historyValueIndex < historyValues; historyValueIndex++) {
                     var value = history[period].values[historyValueIndex];
 
                     // check if map has something in value[0] (timestamp)
-                    if(dateValueMap.hasOwnProperty(value[0])){
+                    if (dateValueMap.hasOwnProperty(value[0])) {
                         // has already something @timestamp
 
                         // check if value has values.length that is plausible with the number of already history items
                         dateValueMap[value[0]][countedHistory] = value[1];
-                    }else{
+                    } else {
                         // has nothing for this timestamp
                         // example execution: dateValueMap[1373286150000] = [,,20234.072];
                         dateValueMap[value[0]] = [];
@@ -104,8 +104,8 @@ GLOBE.HistoryGraphView = Em.View.extend({
 
         // merge everything into a dygraph format ( [timestamp, value1, value2, ...] )
         var dataset = [];
-        for(var dateValue in dateValueMap){
-            if(dateValueMap.hasOwnProperty(dateValue)){
+        for (var dateValue in dateValueMap) {
+            if (dateValueMap.hasOwnProperty(dateValue)) {
                 var dateValueItem = dateValueMap[dateValue];
 
                 // create array with first position for timestamp
@@ -118,11 +118,11 @@ GLOBE.HistoryGraphView = Em.View.extend({
         }
 
 
-        if(!dataset.length){
+        if (!dataset.length) {
             $graphCanvas.html('<div class="missing-data">No data available :(</div>');
             this.set('hasGraph', false);
             return;
-        }else{
+        } else {
             this.set('hasGraph', true);
             // clear area that holds all the views content
             $graphCanvas.html('');
@@ -148,9 +148,9 @@ GLOBE.HistoryGraphView = Em.View.extend({
         this.set('dygraph', dygraph);
     },
 
-    timePeriodChanged: function(){
+    timePeriodChanged: function() {
         var selectedTimePeriod = this.get('period');
-        if(selectedTimePeriod !== null){
+        if (selectedTimePeriod !== null) {
             this.set('timePeriod', selectedTimePeriod);
             this.plot();
         }

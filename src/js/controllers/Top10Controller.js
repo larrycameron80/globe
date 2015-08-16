@@ -4,7 +4,7 @@ GLOBE.Top10Controller = Em.ArrayController.extend({
     relays: [],
 
     actions: {
-        showRelayDetail: function(fingerprint){
+        showRelayDetail: function(fingerprint) {
             this.transitionToRoute('relayDetail', fingerprint);
         }
     }

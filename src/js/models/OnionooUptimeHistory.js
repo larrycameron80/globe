@@ -9,9 +9,9 @@ GLOBE.OnionooUptimeHistory.reopenClass({
      * @param {Boolean} isHashed flag if the given hash is already hashed
      * @returns {Promise}
      */
-    find: function(fingerprint, isHashed){
+    find: function(fingerprint, isHashed) {
         var hashedFingerprint = fingerprint;
-        if(!isHashed){
+        if (!isHashed) {
             // use generate hashed fingerprint if not already hashed
             hashedFingerprint = GLOBE.Util.hashFingerprint(fingerprint);
         }
@@ -19,7 +19,7 @@ GLOBE.OnionooUptimeHistory.reopenClass({
         hashedFingerprint = hashedFingerprint.toUpperCase();
 
         var url = '/uptime?lookup=' + hashedFingerprint;
-        return GLOBE.getJSON(url).then(function(result){
+        return GLOBE.getJSON(url).then(function(result) {
             return GLOBE.Util.compute3DaysHistory(GLOBE.Util.processHistoryResponse({
                 uptime: 'uptime'
             }, result));

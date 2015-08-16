@@ -5,7 +5,7 @@
 var GLOBE = Ember.Application.create();
 
 // @if NODE_ENV == 'TESTING'
-if($.isFunction(window.prepareForTesting)){
+if ($.isFunction(window.prepareForTesting)) {
     prepareForTesting(GLOBE);
 }
 // @endif
@@ -37,14 +37,14 @@ GLOBE = GLOBE.reopen({
     }),
 
     // Event that observes GLOBE.title and changes the document title
-    titleChanged: function(){
+    titleChanged: function() {
 
         var title = this.get('title');
         var suffix = GLOBE.static.titleSuffix + ' ' + GLOBE.static.version;
 
-        if(title.length){
+        if (title.length) {
             $(document).attr('title', title + ' | ' + suffix);
-        }else{
+        } else {
             $(document).attr('title', suffix);
         }
 
@@ -57,8 +57,8 @@ GLOBE = GLOBE.reopen({
      * @param {String} msg Alert message
      * @return {void}
      */
-    setAlert: function(location, type, msg){
-        if(this.get('alert').hasOwnProperty(location)){
+    setAlert: function(location, type, msg) {
+        if (this.get('alert').hasOwnProperty(location)) {
             this.set('alert.' + location, Em.Object.create({
                 type: type,
                 msg: msg
@@ -70,8 +70,8 @@ GLOBE = GLOBE.reopen({
      * @param {String} location Alert storage location
      * @return {void}
      */
-    clearAlert: function(location){
-        if(this.get('alert').hasOwnProperty(location)){
+    clearAlert: function(location) {
+        if (this.get('alert').hasOwnProperty(location)) {
             this.set('alert.' + location, null);
         }
     }
@@ -80,7 +80,7 @@ GLOBE = GLOBE.reopen({
 GLOBE.static = {
     browser: {
         // check if the current browser is firefox
-        isFirefox: function(){
+        isFirefox: function() {
             // @see http://stackoverflow.com/a/9851769
             return typeof InstallTrigger !== 'undefined';
         }
@@ -444,8 +444,8 @@ GLOBE.static.messages.specifyYourSearch = 'To avoid too many requests, we limit 
 
 
 // fill flag array
-for(var icon in GLOBE.static.icons){
-    if(GLOBE.static.icons.hasOwnProperty(icon)){
+for (var icon in GLOBE.static.icons) {
+    if (GLOBE.static.icons.hasOwnProperty(icon)) {
         GLOBE.static.iconsArray.push({
             key: icon,
             value: GLOBE.static.icons[icon]
@@ -454,8 +454,8 @@ for(var icon in GLOBE.static.icons){
 }
 
 // fill countries array
-for(var country in GLOBE.static.countries){
-    if(GLOBE.static.countries.hasOwnProperty(country)){
+for (var country in GLOBE.static.countries) {
+    if (GLOBE.static.countries.hasOwnProperty(country)) {
         GLOBE.static.countriesArray.push({
             key: country,
             value: GLOBE.static.countries[country]
@@ -463,7 +463,7 @@ for(var country in GLOBE.static.countries){
     }
 }
 // sort by country names
-GLOBE.static.countriesArray.sort(function(a, b){
+GLOBE.static.countriesArray.sort(function(a, b) {
     // is a less than b ? -1 else if a greater than b ? 1 otherwise 0 (a==b)
     return a.value < b.value ? -1 : a.value > b.value ? 1 : 0;
 });
@@ -486,15 +486,15 @@ jQuery.fn.dataTableExt.oSort['port-desc']  = function(x,y) {
     x = GLOBE.Formatter.extractPort(x);
     y = GLOBE.Formatter.extractPort(y);
 
-    if(x === GLOBE.static.messages.dataEmpty &&
-        y !== GLOBE.static.messages.dataEmpty){
+    if (x === GLOBE.static.messages.dataEmpty &&
+        y !== GLOBE.static.messages.dataEmpty) {
         return -1;
     }
-    if(y === GLOBE.static.messages.dataEmpty &&
-        x !== GLOBE.static.messages.dataEmpty){
+    if (y === GLOBE.static.messages.dataEmpty &&
+        x !== GLOBE.static.messages.dataEmpty) {
         return 1;
     }
-    if(x === y){
+    if (x === y) {
         return 0;
     }
 
@@ -510,15 +510,15 @@ jQuery.fn.dataTableExt.oSort['port-asc']  = function(x,y) {
     x = GLOBE.Formatter.extractPort(x);
     y = GLOBE.Formatter.extractPort(y);
 
-    if(x === GLOBE.static.messages.dataEmpty &&
-        y !== GLOBE.static.messages.dataEmpty){
+    if (x === GLOBE.static.messages.dataEmpty &&
+        y !== GLOBE.static.messages.dataEmpty) {
         return 1;
     }
-    if(y === GLOBE.static.messages.dataEmpty &&
-        x !== GLOBE.static.messages.dataEmpty){
+    if (y === GLOBE.static.messages.dataEmpty &&
+        x !== GLOBE.static.messages.dataEmpty) {
         return -1;
     }
-    if(x === y){
+    if (x === y) {
         return 0;
     }
 

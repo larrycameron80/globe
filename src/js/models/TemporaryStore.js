@@ -18,12 +18,12 @@ GLOBE.TemporaryStore.reopenClass({
      * @example
      * GLOBE.TemporaryStore.store('details', 'uid123465' , {foo: 'bar'});
      */
-    store: function(where, hashedFingerprint, obj){
+    store: function(where, hashedFingerprint, obj) {
         // use only uppercase fingerprints
         hashedFingerprint = hashedFingerprint.toUpperCase();
 
         // check if store has property in _where
-        if(this.storage.hasOwnProperty('_' + where)){
+        if (this.storage.hasOwnProperty('_' + where)) {
             this.storage['_' + where][hashedFingerprint] = obj;
         }
 
@@ -37,14 +37,14 @@ GLOBE.TemporaryStore.reopenClass({
      * @example
      * var storedItem = NAMESPACE.TemporaryStore.find('details', 'uid123465');
      */
-    find: function(where, hashedFingerprint){
+    find: function(where, hashedFingerprint) {
         // use only uppercase fingerprints
         hashedFingerprint = hashedFingerprint.toUpperCase();
 
         var obj;
 
         // check if store has property in _where
-        if(this.storage.hasOwnProperty('_' + where)){
+        if (this.storage.hasOwnProperty('_' + where)) {
             obj = this.storage['_' + where][hashedFingerprint];
         }
 

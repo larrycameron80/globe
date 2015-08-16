@@ -5,23 +5,23 @@ GLOBE.OnionooBridgeDetail = Em.Object.extend({});
 
 GLOBE.OnionooDetail = Em.Object.extend({});
 GLOBE.OnionooDetail.reopenClass({
-    applyDetailDefaults: function(result, defaults){
+    applyDetailDefaults: function(result, defaults) {
         var details = {
             relays: [],
             bridges: []
         };
 
-        if(result &&
+        if (result &&
             result.hasOwnProperty('relays') &&
-            result.hasOwnProperty('bridges')){
+            result.hasOwnProperty('bridges')) {
 
             var consensus = {
                 bridges: moment.utc(result.bridges_published),
                 relays: moment.utc(result.relays_published)
             };
 
-            if(result.relays.length){
-                for(var i = 0, numRelays = result.relays.length; i < numRelays; i++){
+            if (result.relays.length) {
+                for (var i = 0, numRelays = result.relays.length; i < numRelays; i++) {
 
                     // process result relays
                     var relay = $.extend({}, defaults.relay, result.relays[i]);
@@ -29,9 +29,9 @@ GLOBE.OnionooDetail.reopenClass({
                     var relayLastSeenMoment = moment.utc(relayObj.get('last_seen'));
 
                     // check if consensus.relays and lastSeenMoment exist
-                    if( consensus.relays && relayLastSeenMoment &&
+                    if ( consensus.relays && relayLastSeenMoment &&
                         // check if both are valid (moment.isValid)
-                        consensus.relays.isValid() && relayLastSeenMoment.isValid()){
+                        consensus.relays.isValid() && relayLastSeenMoment.isValid()) {
                         relayObj.set('inLatestConsensus', consensus.relays.isSame(relayLastSeenMoment));
                     }
 
@@ -40,17 +40,17 @@ GLOBE.OnionooDetail.reopenClass({
                 }
             }
 
-            if(result.bridges.length){
-                for(var j = 0, numBridges = result.bridges.length; j < numBridges; j++){
+            if (result.bridges.length) {
+                for (var j = 0, numBridges = result.bridges.length; j < numBridges; j++) {
                     // process result bridges
                     var bridge = $.extend({}, defaults.bridge, result.bridges[j]);
                     var bridgeObj = GLOBE.OnionooRelayDetail.create(bridge);
                     var bridgeLastSeenMoment = moment.utc(bridgeObj.get('last_seen'));
 
                     // check if consensus.relays and lastSeenMoment exist
-                    if( consensus.bridges && bridgeLastSeenMoment &&
+                    if ( consensus.bridges && bridgeLastSeenMoment &&
                         // check if both are valid (moment.isValid)
-                        consensus.bridges.isValid() && bridgeLastSeenMoment.isValid()){
+                        consensus.bridges.isValid() && bridgeLastSeenMoment.isValid()) {
                         bridgeObj.set('inLatestConsensus', consensus.bridges.isSame(bridgeLastSeenMoment));
                     }
 
@@ -66,7 +66,7 @@ GLOBE.OnionooDetail.reopenClass({
      * @param {Object} opts
      * @returns {Promise}
      */
-    findWithFilter: function(opts){
+    findWithFilter: function(opts) {
         //query, filter, fields
         var query = opts.query || '';
         var filter = opts.filter || {};
@@ -83,15 +83,15 @@ GLOBE.OnionooDetail.reopenClass({
 
         // add fields parameters
         var fieldParamString = '';
-        if(fields.length){
+        if (fields.length) {
             fieldParamString = '&fields=' + fields.join(',');
         }
 
         // manually set params
         var advancedParamsString = '&';
-        for(var filterParam in filter){
-            if(filter.hasOwnProperty(filterParam)){
-                if(filter[filterParam].length){
+        for (var filterParam in filter) {
+            if (filter.hasOwnProperty(filterParam)) {
+                if (filter[filterParam].length) {
                     advancedParamsString += filterParam + '=' + filter[filterParam] + '&';
                 }
             }
@@ -105,7 +105,7 @@ GLOBE.OnionooDetail.reopenClass({
 
         url += searchParamString + advancedParamsString + fieldParamString;
 
-        return GLOBE.getJSON(url).then(function(result){
+        return GLOBE.getJSON(url).then(function(result) {
             // getJSON success callback
 
             GLOBE.decrementProperty('loading');
@@ -128,11 +128,11 @@ GLOBE.OnionooDetail.reopenClass({
      * @param {Boolean} isHashed
      * @returns {Promise}
      */
-    find: function(fingerprint, isHashed){
+    find: function(fingerprint, isHashed) {
         var that = this;
         var hashedFingerprint = fingerprint;
 
-        if(!isHashed){
+        if (!isHashed) {
             // use generate hashed fingerprint if not already hashed
             hashedFingerprint = GLOBE.Util.hashFingerprint(fingerprint);
         }
@@ -140,14 +140,14 @@ GLOBE.OnionooDetail.reopenClass({
         hashedFingerprint = hashedFingerprint.toUpperCase();
 
         var storedDetail = GLOBE.TemporaryStore.find('details', hashedFingerprint);
-        if(storedDetail === undefined){
+        if (storedDetail === undefined) {
             // has no detail stored
 
             GLOBE.incrementProperty('loading');
 
             var url = '/details?lookup=' + hashedFingerprint;
 
-            return GLOBE.getJSON(url).then(function(result){
+            return GLOBE.getJSON(url).then(function(result) {
                 var detailsObj = that.applyDetailDefaults(result, {
                     relay: GLOBE.defaults.OnionooRelayDetail,
                     bridge: GLOBE.defaults.OnionooBridgeDetail
@@ -165,7 +165,7 @@ GLOBE.OnionooDetail.reopenClass({
                 return  detailObj;
             });
 
-        }else{
+        } else {
             return new Em.RSVP.Promise(function (resolve) {
                 resolve(storedDetail);
             });
@@ -177,7 +177,7 @@ GLOBE.OnionooDetail.reopenClass({
      * @param {String} order parameter for the onionoo `?order` parameter
      * @returns {Promise}
      */
-    top10: function(order){
+    top10: function(order) {
         var that = this;
         var fields = ['fingerprint', 'nickname', 'advertised_bandwidth', 'last_restarted', 'country', 'flags', 'or_addresses', 'dir_address', 'running', 'hashed_fingerprint'];
 
@@ -191,7 +191,7 @@ GLOBE.OnionooDetail.reopenClass({
         url += '&running=true';
 
         GLOBE.incrementProperty('loading');
-        return GLOBE.getJSON(url).then(function(result){
+        return GLOBE.getJSON(url).then(function(result) {
             GLOBE.decrementProperty('loading');
 
             return that.applyDetailDefaults(result, {
