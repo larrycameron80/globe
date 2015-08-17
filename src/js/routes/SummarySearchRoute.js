@@ -1,14 +1,14 @@
 /*global $, GLOBE, Em */
 GLOBE.SummarySearchRoute = Em.Route.extend({
 
-    deactivate: function(){
+    deactivate: function() {
         // clear alerts for search
         GLOBE.clearAlert('search');
     },
-    model: function(params){
+    model: function(params) {
         return params.query;
     },
-    setupController: function(controller, params){
+    setupController: function(controller, params) {
         // deparam querystring
         var deparamd = $.deparam(params),
             query = deparamd.query,
@@ -18,8 +18,8 @@ GLOBE.SummarySearchRoute = Em.Route.extend({
             fields = ['fingerprint', 'nickname', 'advertised_bandwidth', 'last_restarted', 'country', 'flags', 'or_addresses', 'dir_address', 'running', 'hashed_fingerprint'];
 
         // set controller filters from params
-        for(var filter in filters){
-            if(filters.hasOwnProperty(filter)){
+        for (var filter in filters) {
+            if (filters.hasOwnProperty(filter)) {
                 controller.set('controllers.application.advancedSearchOptions.' + filter, filters[filter]);
             }
         }
@@ -31,7 +31,7 @@ GLOBE.SummarySearchRoute = Em.Route.extend({
         controller.set('controllers.application.query', query);
 
         // check if query is a 40 char hex and hash if it's true
-        if(GLOBE.Util.is40CharHex(query)){
+        if (GLOBE.Util.is40CharHex(query)) {
             query = GLOBE.Util.hashFingerprint(query);
         }
 
@@ -42,9 +42,9 @@ GLOBE.SummarySearchRoute = Em.Route.extend({
             query: query,
             filter: filters,
             fields: fields
-        }).then(function(summaries){
+        }).then(function(summaries) {
             // show message if there are too much results
-            if(summaries.relays.length + summaries.bridges.length >= GLOBE.static.numbers.maxSearchResults){
+            if (summaries.relays.length + summaries.bridges.length >= GLOBE.static.numbers.maxSearchResults) {
                 GLOBE.setAlert('search', 'info', GLOBE.static.messages.specifyYourSearch);
             }
 

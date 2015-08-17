@@ -1,12 +1,12 @@
 /*global GLOBE, Em */
 GLOBE.RelayDetailRoute = Em.Route.extend({
-    model: function(params){
+    model: function(params) {
         return params.fingerprint;
     },
-    setupController: function(controller, fingerprint){
+    setupController: function(controller, fingerprint) {
         var that = this;
 
-        GLOBE.OnionooDetail.find(fingerprint).then(function(item){
+        GLOBE.OnionooDetail.find(fingerprint).then(function(item) {
 
             // check if found relay
             if (item.relay.hasOwnProperty('fingerprint')) {
@@ -21,7 +21,7 @@ GLOBE.RelayDetailRoute = Em.Route.extend({
                     weight: GLOBE.OnionooWeightsHistory.find(fingerprint),
                     bandwidth: GLOBE.OnionooBandwidthHistory.find(fingerprint),
                     uptime: GLOBE.OnionooUptimeHistory.find(fingerprint)
-                }).then(function(result){
+                }).then(function(result) {
 
                     controller.setProperties({
                         weightPeriods: result.weight.relays.periods,
@@ -35,7 +35,7 @@ GLOBE.RelayDetailRoute = Em.Route.extend({
                     controller.updatePeriods(['weightData', 'bandwidthData', 'uptimeData']);
                 });
 
-            } else if(item.bridge && item.bridge.hasOwnProperty('hashed_fingerprint')) {
+            } else if (item.bridge && item.bridge.hasOwnProperty('hashed_fingerprint')) {
                 // has bridge but no relay
                 that.replaceWith('bridgeDetail', item.bridge.hashed_fingerprint);
             } else {

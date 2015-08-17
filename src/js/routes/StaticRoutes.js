@@ -3,7 +3,7 @@
  * Route for /index
  */
 GLOBE.IndexRoute = Em.Route.extend({
-    activate: function(){
+    activate: function() {
         GLOBE.set('title', '');
     }
 });
@@ -12,7 +12,7 @@ GLOBE.IndexRoute = Em.Route.extend({
  * Route for /code
  */
 GLOBE.CodeRoute = Em.Route.extend({
-    activate: function(){
+    activate: function() {
         GLOBE.set('title', 'Code');
     }
 });
@@ -21,7 +21,7 @@ GLOBE.CodeRoute = Em.Route.extend({
  * Route for /help
  */
 GLOBE.HelpRoute = Em.Route.extend({
-    activate: function(){
+    activate: function() {
         GLOBE.set('title', 'Help');
     }
 });

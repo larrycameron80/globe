@@ -7,7 +7,7 @@ GLOBE.Util = {
      * @param {String} string String to check
      * @returns {Boolean} If the checked string is a 40 char hex
      */
-    is40CharHex: function(string){
+    is40CharHex: function(string) {
         var hex40CharRegex = /^[a-f0-9]{40}/i,
             result;
 
@@ -22,7 +22,7 @@ GLOBE.Util = {
      * @param {String} fingerprint
      * @returns {String} hashed fingerprint
      */
-    hashFingerprint: function(fingerprint){
+    hashFingerprint: function(fingerprint) {
         var fingerBin = new jsSHA(fingerprint, 'HEX'),
             hashed = fingerBin.getHash('SHA-1', 'HEX');
         return hashed.toUpperCase();
@@ -33,7 +33,7 @@ GLOBE.Util = {
      * @param {String} value UTC Timestamp
      * @returns {{h: Number, m: Number, s: Number, d: Number}} hour, minute, second, day
      */
-    UtcDiff: function(value){
+    UtcDiff: function(value) {
         var momentDate = moment.utc(value, 'YYYY-MM-DD HH:mm:ss'),
             diff,
             // default result
@@ -72,7 +72,7 @@ GLOBE.Util = {
      * @example
      * if uptime < days the function returns [ hours, minutes ]
      */
-    UptimeCalculator: function(value, type){
+    UptimeCalculator: function(value, type) {
         // if not a valid length return empty data message
         if (value.length !== 19) {
             return [GLOBE.static.messages.dataEmpty];
@@ -89,15 +89,15 @@ GLOBE.Util = {
             labels = shortVersion ? ['d', 'h', 'm', 's'] : ['day', 'hour', 'minute', 'second'],
             uptimeArray = [];
 
-        for(var i = 0, max = units.length; i < max; i++){
-            if(labels[i] && labels[i].length && units[i] > 0){
+        for (var i = 0, max = units.length; i < max; i++) {
+            if (labels[i] && labels[i].length && units[i] > 0) {
                 digits += 1;
                 uptimeArray[i] = units[i] + beforeUnit + (pluralize && units[i] > 1 ? labels[i] + 's' : labels[i]) + afterUnit;
 
-                if(digits > 1){
+                if (digits > 1) {
                     break;
                 }
-            }else{
+            } else {
                 labels[i] = '';
             }
         }
@@ -110,7 +110,7 @@ GLOBE.Util = {
      * @returns {Date} converted date Object
      * @throws {String} will throw an error if the parsed timestamp is invalid
      */
-    utcToDate: function(timestamp){
+    utcToDate: function(timestamp) {
         var timeMoment = moment.utc(timestamp, 'YYYY-MM-DD HH:mm:ss');
 
         if (!timeMoment.isValid()) {
@@ -126,13 +126,13 @@ GLOBE.Util = {
      * @throws {String} throws an error if there is no interval or there is something wrong with start and end date
      * @returns {*}
      */
-    buildTimeValuePairs: function(historyObject){
-        if(historyObject.first && historyObject.last && historyObject.interval){
+    buildTimeValuePairs: function(historyObject) {
+        if (historyObject.first && historyObject.last && historyObject.interval) {
             var startDate = this.utcToDate(historyObject.first),
                 endDate = this.utcToDate(historyObject.last);
 
             // check if Date creation was successfull
-            if(!isNaN(startDate.getTime()) && !isNaN(endDate.getTime())){
+            if (!isNaN(startDate.getTime()) && !isNaN(endDate.getTime())) {
                 // everything worked
 
                 var sum = 0,
@@ -142,7 +142,7 @@ GLOBE.Util = {
                     interval = historyObject.interval * 1000,
                     currentTime = startDate.getTime();
 
-                for(var i = 0, max = values.length; i < max; i++){
+                for (var i = 0, max = values.length; i < max; i++) {
                     var realValue = values[i] * historyObject.factor;
 
                     newValues.push([
@@ -157,11 +157,11 @@ GLOBE.Util = {
                 historyObject.avg = (sum / values.length);
                 historyObject.values = newValues;
 
-            }else{
+            } else {
                 throw 'There was an error parsing the history object timestamps. Check if ' + historyObject.first + ' or ' + historyObject.last + ' are correct.';
             }
 
-        }else{
+        } else {
             throw 'Cannot generate time value pairs if there is no time interval given';
         }
 
@@ -173,10 +173,10 @@ GLOBE.Util = {
      * @param {Object} toBuild
      * @returns {Array}
      */
-    prepareHistoryItems: function(history, toBuild){
+    prepareHistoryItems: function(history, toBuild) {
         var periods = [];
         for (var build in toBuild) {
-            if(toBuild.hasOwnProperty(build)){
+            if (toBuild.hasOwnProperty(build)) {
 
                 var buildHistory = toBuild[build];
                 for (var buildKey in buildHistory) {
@@ -220,7 +220,7 @@ GLOBE.Util = {
         return looksLike;
     },
 
-    processHistoryResponse: function(fieldMapping, response){
+    processHistoryResponse: function(fieldMapping, response) {
         var hasRelays = response && response.relays && response.relays.length,
             hasBridges = response && response.bridges && response.bridges.length,
             relays = {
@@ -302,13 +302,13 @@ GLOBE.Util = {
         return processedHistoryResponse;
     },
 
-    historyValuesFromNowUntil: function(cfg){
+    historyValuesFromNowUntil: function(cfg) {
         var history = cfg.history,
             timeAgo = cfg.timeAgo,
             source = cfg.sourceField,
             dest = cfg.destField;
 
-        Object.keys(history).forEach(function(historyField){
+        Object.keys(history).forEach(function(historyField) {
             if (history[historyField][source]) {
                 // get first timestamp
                 var sum = 0,
@@ -317,9 +317,9 @@ GLOBE.Util = {
                     // get youngest dataset from source
                     now = moment.utc(),
                     timeFromComputedNowAgo = now - timeAgo,
-                    filteredSourceValues = sourceValues.filter(function(valuePair){
+                    filteredSourceValues = sourceValues.filter(function(valuePair) {
                         if (valuePair[0] > timeFromComputedNowAgo) {
-                            if (valuePair[0] < earliestValue){
+                            if (valuePair[0] < earliestValue) {
                                 earliestValue = valuePair[0];
                             }
                             sum += valuePair[1];
@@ -338,7 +338,7 @@ GLOBE.Util = {
         });
     },
 
-    nowMinusPeriod: function(period){
+    nowMinusPeriod: function(period) {
         var periodObject = GLOBE.static.periodObject[period];
         return moment.utc().subtract(periodObject[0], periodObject[1]);
     }

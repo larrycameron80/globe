@@ -1,11 +1,11 @@
 /*global GLOBE, Em */
 GLOBE.BridgeDetailRoute = Em.Route.extend({
-    model: function(params){
+    model: function(params) {
         return params.fingerprint;
     },
-    setupController: function(controller, fingerprint){
+    setupController: function(controller, fingerprint) {
 
-        GLOBE.OnionooDetail.find(fingerprint).then(function(item){
+        GLOBE.OnionooDetail.find(fingerprint).then(function(item) {
             // check if found bridge
             if (item.bridge.hasOwnProperty('hashed_fingerprint')) {
 
@@ -18,7 +18,7 @@ GLOBE.BridgeDetailRoute = Em.Route.extend({
                     bandwidth: GLOBE.OnionooBandwidthHistory.find(fingerprint, true),
                     uptime: GLOBE.OnionooUptimeHistory.find(fingerprint, true),
                     clients: GLOBE.OnionooClientsHistory.find(fingerprint, true)
-                }).then(function(result){
+                }).then(function(result) {
 
                     controller.setProperties({
                         bandwidthPeriods: result.bandwidth.bridges.periods,

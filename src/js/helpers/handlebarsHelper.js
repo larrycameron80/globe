@@ -2,7 +2,7 @@
 /**
  * @see {@link GLOBE.Formatter.boolean()}
  */
-Em.Handlebars.helper('truefalse', function(value){
+Em.Handlebars.helper('truefalse', function(value) {
     var wrapped = GLOBE.Formatter.boolean(value);
     return new Handlebars.SafeString(wrapped);
 });
@@ -10,7 +10,7 @@ Em.Handlebars.helper('truefalse', function(value){
 /**
  * @see {@link GLOBE.Formatter.bandwidth()}
  */
-Em.Handlebars.helper('bandwidth', function(value){
+Em.Handlebars.helper('bandwidth', function(value) {
     var formatted = GLOBE.Formatter.bandwidth(value);
     return new Handlebars.SafeString(formatted);
 });
@@ -18,11 +18,11 @@ Em.Handlebars.helper('bandwidth', function(value){
 /**
  * Uses {@link GLOBE.static.countries} to get the full name for a country key
  */
-Em.Handlebars.registerBoundHelper('fullCountry', function(value){
+Em.Handlebars.registerBoundHelper('fullCountry', function(value) {
     value = Handlebars.Utils.escapeExpression(value);
 
     var fullCountry = '';
-    if(GLOBE.static.countries.hasOwnProperty(value)){
+    if (GLOBE.static.countries.hasOwnProperty(value)) {
         fullCountry = GLOBE.static.countries[value];
     }
 
@@ -32,7 +32,7 @@ Em.Handlebars.registerBoundHelper('fullCountry', function(value){
 /**
  * @see {@link GLOBE.Formatter.countryFlag()}
  */
-Em.Handlebars.registerBoundHelper('prettyCountryFlag', function(value){
+Em.Handlebars.registerBoundHelper('prettyCountryFlag', function(value) {
     value = Handlebars.Utils.escapeExpression(value);
 
     var countryLabel = GLOBE.Formatter.countryFlag(value);
@@ -42,7 +42,7 @@ Em.Handlebars.registerBoundHelper('prettyCountryFlag', function(value){
 /**
  * @see {@link GLOBE.Formatter.countryFlag()}
  */
-Em.Handlebars.registerBoundHelper('flaggifyShort', function(value){
+Em.Handlebars.registerBoundHelper('flaggifyShort', function(value) {
     value = Handlebars.Utils.escapeExpression(value);
     var withImage = GLOBE.Formatter.countryFlag(value);
     return new Handlebars.SafeString(withImage);
@@ -51,11 +51,11 @@ Em.Handlebars.registerBoundHelper('flaggifyShort', function(value){
 /**
  * Generates HTML that displays an flag icon with flag title
  */
-Em.Handlebars.registerBoundHelper('flaggifyLong', function(value){
+Em.Handlebars.registerBoundHelper('flaggifyLong', function(value) {
     var map = GLOBE.static.icons;
     value = Handlebars.Utils.escapeExpression(value);
     var withImage = value;
-    if(map.hasOwnProperty(value)){
+    if (map.hasOwnProperty(value)) {
         withImage = '<i class="fa ' + map[value] + '"></i> ' + withImage;
     }
     return new Handlebars.SafeString(withImage);
@@ -65,8 +65,8 @@ Em.Handlebars.registerBoundHelper('flaggifyLong', function(value){
  * Uses the 'long' variant to generate an uptime string
  * @see {@title GLOBE.Util.UptimeCalculator}
  */
-Em.Handlebars.helper('uptimeFull', function(value){
-    if(!value){
+Em.Handlebars.helper('uptimeFull', function(value) {
+    if (!value) {
         return '';
     }
     value = Handlebars.Utils.escapeExpression(value);
@@ -78,8 +78,8 @@ Em.Handlebars.helper('uptimeFull', function(value){
  * Uses the 'short' variant to generate an uptime string
  * @see {@title GLOBE.Util.UptimeCalculator}
  */
-Em.Handlebars.helper('uptimeShort', function(value){
-    if(!value){
+Em.Handlebars.helper('uptimeShort', function(value) {
+    if (!value) {
         return '';
     }
     value = Handlebars.Utils.escapeExpression(value);
@@ -90,7 +90,7 @@ Em.Handlebars.helper('uptimeShort', function(value){
 /**
  * @see {@link GLOBE.Formatter.extractPort()}
  */
-Em.Handlebars.helper('extractPort', function(value){
+Em.Handlebars.helper('extractPort', function(value) {
     value = Handlebars.Utils.escapeExpression(value);
 
     var port = GLOBE.Formatter.extractPort(value);
@@ -101,11 +101,11 @@ Em.Handlebars.helper('extractPort', function(value){
 /**
  * uses {@link http://momentjs.com/docs/#/displaying/fromnow/} to display the difference from now and a given time
  */
-Em.Handlebars.helper('fromNow', function(value){
+Em.Handlebars.helper('fromNow', function(value) {
     var fromNow = '',
         valMoment = moment.utc(value);
 
-    if(valMoment.isValid()){
+    if (valMoment.isValid()) {
         fromNow = valMoment.fromNow();
     }
 
@@ -114,18 +114,18 @@ Em.Handlebars.helper('fromNow', function(value){
 /**
  * @see {@link GLOBE.Formatter.familyToFingerprint()}
  */
-Em.Handlebars.helper('familyToFingerprint', function(value){
+Em.Handlebars.helper('familyToFingerprint', function(value) {
     return new Handlebars.SafeString(GLOBE.Formatter.familyToFingerprint(value));
 });
 /**
  * @see {@link GLOBE.Formatter.familyToFingerprint()}
  */
-Em.Handlebars.helper('percent', function(value, precision){
+Em.Handlebars.helper('percent', function(value, precision) {
     return new Handlebars.SafeString(GLOBE.Formatter.percent(value, precision));
 });
 /**
  * @see {@link GLOBE.Formatter.familyToFingerprint()}
  */
-Em.Handlebars.helper('anonIpAdress', function(value){
+Em.Handlebars.helper('anonIpAdress', function(value) {
     return new Handlebars.SafeString(GLOBE.Formatter.anonymizeIpAddress(value));
 });

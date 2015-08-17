@@ -43,54 +43,54 @@ GLOBE.ApplicationController = Em.Controller.extend({
         flag: null
     },
 
-    init: function(){
+    init: function() {
         this.set('title', '');
     },
 
-    titleChanged: function(){
+    titleChanged: function() {
         var title = this.get('title');
         var suffix = GLOBE.static.titleSuffix + ' ' + GLOBE.static.version;
 
-        if(title.length){
+        if (title.length) {
             $(document).attr('title', title + ' | ' + suffix);
-        }else{
+        } else {
             $(document).attr('title', suffix);
         }
     }.observes('title'),
 
     actions: {
-        toggleAdvancedSearch: function(){
+        toggleAdvancedSearch: function() {
             this.toggleProperty('advancedSearch');
         },
 
         /**
          * action that prepares a payload and transitions to the search route
          */
-        search: function(){
+        search: function() {
             var value = this.get('value');
             var advanced = this.get('advancedSearch');
             var advancedOptions = this.get('advancedSearchOptions');
 
-            if(advanced){
+            if (advanced) {
                 // serialize form
                 var serialized = $('.advanced-search-form').serializeArray();
 
                 // reset
-                for(var option in advancedOptions){
-                    if(advancedOptions.hasOwnProperty(option)){
+                for (var option in advancedOptions) {
+                    if (advancedOptions.hasOwnProperty(option)) {
                         delete advancedOptions[option];
                     }
                 }
 
-                for(var fieldIndex = 0, maxIndex = serialized.length; fieldIndex < maxIndex; fieldIndex++){
+                for (var fieldIndex = 0, maxIndex = serialized.length; fieldIndex < maxIndex; fieldIndex++) {
                     var field = serialized[fieldIndex];
-                    if(field.value && field.value.length){
+                    if (field.value && field.value.length) {
                         advancedOptions[field.name] = field.value;
                     }
                 }
 
                 this.set('advancedSearchOptions', advancedOptions);
-            }else{
+            } else {
                 advancedOptions = {};
             }
 

@@ -1,19 +1,19 @@
 /*global GLOBE, Em */
 GLOBE.RelayDetailView = Em.View.extend({
-    didInsertElement: function(){
+    didInsertElement: function() {
         this.$('.has-tip').qtip(GLOBE.static.qtipConf.detail);
         this.get('controller').on('content-ready', Em.run.bind(this, this.bindQTip));
     },
 
-    bindQTip: function(){
-        Em.run.scheduleOnce('afterRender', this, function(){
+    bindQTip: function() {
+        Em.run.scheduleOnce('afterRender', this, function() {
             // remove old tips and init again
             this.$('.has-tip').qtip('destroy', true);
             this.$('.has-tip').qtip(GLOBE.static.qtipConf.detail);
         });
     },
 
-    willDestroyElement: function(){
+    willDestroyElement: function() {
         this.$('.has-tip').qtip('destroy', true);
     }
 });

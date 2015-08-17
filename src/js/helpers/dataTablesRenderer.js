@@ -8,7 +8,7 @@ GLOBE.DataTableRenderer = {
     uptime: function (length) {
         return function (data, type, context) {
             if (type === 'display') {
-                if (context.running){
+                if (context.running) {
                     return GLOBE.Util.UptimeCalculator(data, length).join(' ');
                 } else {
                     return '<span class="has-tip" title="Offline">' + GLOBE.static.messages.dataEmpty + '</span>';
@@ -52,10 +52,10 @@ GLOBE.DataTableRenderer = {
             var flagString = '';
 
             // create flag render
-            if(!data.length){
+            if (!data.length) {
                 return '';
             }
-            data.forEach(function(n){
+            data.forEach(function(n) {
                 flagString += GLOBE.Formatter.propFlag(n);
             });
             return flagString;

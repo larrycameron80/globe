@@ -5,7 +5,7 @@ GLOBE.AlertBoxComponent = Em.Component.extend({
 
     classNameBindings: ['baseClass', 'type'],
 
-    isVisible: function(){
+    isVisible: function() {
         var type = this.get('type'),
             msg = this.get('msg');
 

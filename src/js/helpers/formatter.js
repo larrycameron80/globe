@@ -9,11 +9,11 @@ GLOBE.Formatter = {
      * // returns '2.05KB/s'
      * GLOBE.Formatter.bandwidth(2048)
      */
-    bandwidth: function(value){
+    bandwidth: function(value) {
         var formatted = GLOBE.static.messages.dataEmpty;
 
         value = parseInt(value, 10);
-        if(value !== -1 && !isNaN(value)){
+        if (value !== -1 && !isNaN(value)) {
             var bandwidthKB = value / 1000;
             var bandwidthMB = bandwidthKB / 1000;
 
@@ -42,14 +42,14 @@ GLOBE.Formatter = {
      * // returns '"<span class="boolean true">true</span>"'
      * GLOBE.Formatter.boolean(true)
      */
-    boolean: function(value){
+    boolean: function(value) {
         var wrapped = '';
 
-        if(value === 'true' || value === true){
+        if (value === 'true' || value === true) {
             wrapped = '<span class="boolean true">true</span>';
-        }else if(value === 'false' || value === false){
+        }else if (value === 'false' || value === false) {
             wrapped = '<span class="boolean false">false</span>';
-        }else{
+        } else {
             wrapped = '<span class="boolean">' + GLOBE.static.messages.dataEmpty + '</span>';
         }
         return wrapped;
@@ -64,13 +64,13 @@ GLOBE.Formatter = {
      * // returns '"<span title="Germany" data-tooltip class="has-tip country-flag de_png"></span>"'
      * GLOBE.Formatter.countryFlag('de')
      */
-    countryFlag: function(value){
+    countryFlag: function(value) {
 
         var fullCountry = '';
 
-        if(GLOBE.static.countries.hasOwnProperty(value)){
+        if (GLOBE.static.countries.hasOwnProperty(value)) {
             fullCountry = GLOBE.static.countries[value];
-        }else{
+        } else {
             fullCountry = GLOBE.static.messages.dataEmpty;
             value = 'empty';
         }
@@ -89,11 +89,11 @@ GLOBE.Formatter = {
      * // return '<span class="fa fa-bolt has-tip" data-tooltip title="Fast"></span>'
      * GLOBE.Formatter.propFlag('Fast')
      */
-    propFlag: function(value){
+    propFlag: function(value) {
         var map = GLOBE.static.icons,
             withImage = '';
 
-        if(map.hasOwnProperty(value)){
+        if (map.hasOwnProperty(value)) {
             withImage = '<span class="fa ' + map[value] + ' has-tip" data-tooltip title="' + value + '"></span>';
         }
         return withImage;
@@ -107,10 +107,10 @@ GLOBE.Formatter = {
      * // returns '9000'
      * GLOBE.Formatter.extractPort('10.10.10.1:9000');
      */
-    extractPort: function(value){
+    extractPort: function(value) {
         var port = GLOBE.static.messages.dataEmpty;
 
-        if(typeof value === 'string'){
+        if (typeof value === 'string') {
             var parts = value.split(':'),
                 part;
 

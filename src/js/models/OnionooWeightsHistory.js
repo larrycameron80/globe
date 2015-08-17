@@ -8,10 +8,10 @@ GLOBE.OnionooWeightsHistory.reopenClass({
      * @param {Boolean} isHashed
      * @returns {Promise}
      */
-    find: function(fingerprint, isHashed){
+    find: function(fingerprint, isHashed) {
         var hashedFingerprint = fingerprint;
 
-        if(!isHashed){
+        if (!isHashed) {
             // use generate hashed fingerprint if not already hashed
             hashedFingerprint = GLOBE.Util.hashFingerprint(fingerprint);
         }
@@ -20,7 +20,7 @@ GLOBE.OnionooWeightsHistory.reopenClass({
 
         var url = '/weights?lookup=' + hashedFingerprint;
 
-        return GLOBE.getJSON(url).then(function(result){
+        return GLOBE.getJSON(url).then(function(result) {
             return GLOBE.Util.compute3DaysHistory(GLOBE.Util.processHistoryResponse({
                 consensusWeightFraction: 'consensus_weight_fraction',
                 guardProbability: 'guard_probability',
