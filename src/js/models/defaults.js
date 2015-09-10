@@ -23,7 +23,7 @@ GLOBE.defaults.OnionooBridgeDetail = {
 /**
  * default relay detail object
  * @see {@link https://onionoo.torproject.org/#details}
- * @type {{nickname: string, fingerprint: string, hashed_fingerprint: string, or_addresses: Array, exit_addresses: Array, dir_address: string, last_seen: string, last_changed_address_or_port: string, first_seen: string, running: null, flags: Array, country: string, country_name: string, region_name: string, city_name: string, latitude: number, longitude: number, as_number: string, as_name: string, consensus_weight: number, host_name: string, last_restarted: string, bandwidth_rate: number, bandwidth_burst: number, observed_bandwidth: number, advertised_bandwidth: number, exit_policy: Array, exit_policy_summary: Array, contact: string, platform: string, family: Array, advertised_bandwidth_fraction: number, consensus_weight_fraction: number, guard_probability: number, middle_probability: number, exit_probability: number}}
+ * @type {{nickname: string, fingerprint: string, hashed_fingerprint: string, or_addresses: Array, exit_addresses: Array, dir_address: string, last_seen: string, last_changed_address_or_port: string, first_seen: string, running: null, flags: Array, country: string, country_name: string, region_name: string, city_name: string, latitude: number, longitude: number, as_number: string, as_name: string, consensus_weight: number, host_name: string, last_restarted: string, bandwidth_rate: number, bandwidth_burst: number, observed_bandwidth: number, advertised_bandwidth: number, exit_policy: Array, exit_policy_summary: Array, contact: string, platform: string, family: Array (deprecated), effective_family: Array, alleged_family: Array, advertised_bandwidth_fraction: number, consensus_weight_fraction: number, guard_probability: number, middle_probability: number, exit_probability: number}}
  */
 GLOBE.defaults.OnionooRelayDetail = {
     nickname: 'Unnamed',
@@ -59,6 +59,8 @@ GLOBE.defaults.OnionooRelayDetail = {
     contact: '',
     platform: '',
     family: [],
+    effective_family: [],
+    alleged_family: [],
     advertised_bandwidth_fraction: -1,
     consensus_weight_fraction: -1,
     guard_probability: -1,

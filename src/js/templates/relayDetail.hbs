@@ -171,11 +171,16 @@
                                 title="Other family members of this relay.">Family Members</h5>
                             <div class="property-content">
                                 <ul class="item-list">
-                                    {{#each family}}
-                                        <li><i {{action 'visitFamilyMember' this}} title="open family member details" class="button fa fa-external-link-square"></i> {{unbound familyToFingerprint this }}</li>
-                                    {{else}}
+                                    {{#if emptyFamily}}
                                         <li>none</li>
-                                    {{/each}}
+                                    {{else}}
+                                        {{#each effective_family}}
+                                            <li><i {{action 'visitFamilyMember' this}} title="open family member details" class="button fa fa-external-link-square"></i> {{unbound familyToFingerprint this }}</li>
+                                        {{/each}}
+                                        {{#each alleged_family}}
+                                            <li class="alleged"><i {{action 'visitFamilyMember' this}} title="open (alleged) family member details" class="button fa fa-external-link-square"></i> {{unbound familyToFingerprint this }}</li>
+                                        {{/each}}
+                                    {{/if}}
                                 </ul>
                             </div>
                         </div>

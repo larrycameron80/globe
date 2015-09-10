@@ -27,6 +27,7 @@ GLOBE.OnionooDetail.reopenClass({
                     var relay = $.extend({}, defaults.relay, result.relays[i]);
                     var relayObj = GLOBE.OnionooRelayDetail.create(relay);
                     var relayLastSeenMoment = moment.utc(relayObj.get('last_seen'));
+                    var emptyFamily = true;
 
                     // check if consensus.relays and lastSeenMoment exist
                     if ( consensus.relays && relayLastSeenMoment &&
@@ -34,6 +35,13 @@ GLOBE.OnionooDetail.reopenClass({
                         consensus.relays.isValid() && relayLastSeenMoment.isValid()) {
                         relayObj.set('inLatestConsensus', consensus.relays.isSame(relayLastSeenMoment));
                     }
+                    
+                    // family field is replaced by the union of both effective and alleged family fields
+                    if( relayObj.effective_family.length > 0 || relayObj.alleged_family.length > 0 ) {
+                        emptyFamily = false;
+                    }
+
+                    relayObj.set('emptyFamily', emptyFamily);
 
                     details.relays.push(relayObj);
 

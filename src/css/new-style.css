@@ -456,6 +456,10 @@ code {
       background-color: #f7f7f7; }
     .item-list li:last-of-type {
       border-bottom: 0; }
+    .item-list li.alleged {
+      background-color: #ffe2c9; }
+    .item-list li.alleged:nth-child(even) {
+      background-color: #ffefe0; }
 
 .flags-list i.fa {
   margin-right: 10px; }
